@@ -15,9 +15,25 @@ class Movies extends Component {
   render() {
     const {movieList} = this.state;
 
-    return movieList.map((movie) => (
-        <MovieItem key={movie.id} item={movie}/>
-    ));
+    return (
+        <table className={"table table-striped table-hover"}>
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Production Date</th>
+            <th>Genre</th>
+            <th>Score</th>
+          </tr>
+          </thead>
+          <tbody>
+          {
+            movieList.map((movie) => (
+              <MovieItem key={movie.id} item={movie}/>
+            ))
+          }
+          </tbody>
+        </table>
+    )
   }
 }
 
