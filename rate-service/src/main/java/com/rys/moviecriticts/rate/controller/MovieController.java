@@ -35,12 +35,14 @@ public class MovieController {
 
     @PostMapping("/{id}/rates")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:3000")
     void addRate(@PathVariable final UUID id, @RequestBody final CreationRateDto rateDto) {
         handler.handle(new AddRateCommand(rateDto.getRate(), id));
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:3000")
     List<MovieView> findMovies(@RequestParam(required = false, defaultValue = "0") final int page,
         @RequestParam(required = false, defaultValue = "10") final int size) {
         return movieQuery.findMovies(new PageableDto(size, page));
