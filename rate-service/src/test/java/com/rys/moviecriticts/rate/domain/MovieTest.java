@@ -3,6 +3,7 @@ package com.rys.moviecriticts.rate.domain;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.rys.moviecriticts.rate.domain.exception.DomainException;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
@@ -27,6 +28,8 @@ class MovieTest {
         assertEquals(2, expectedRates.size());
         assertTrue(expectedRates.stream().anyMatch((rate) -> rate.getScale() == rate1));
         assertTrue(expectedRates.stream().anyMatch((rate) -> rate.getScale() == rate2));
+        assertEquals(2, movie.getNumberOfVotes());
+        assertEquals(new BigDecimal("7.5"), movie.getScore());
 
     }
 

@@ -1,6 +1,8 @@
 package com.rys.moviecriticts.rate.domain;
 
 import com.rys.moviecriticts.rate.domain.exception.DomainException;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,6 +28,8 @@ public class Movie {
     private final String genre;
     @Valid
     private List<Rate> rates;
+    private BigDecimal score;
+    private int numberOfVotes;
 
     public Movie(final UUID id, final String title, final LocalDate productionDate, final String genre) {
         this.id = id;
@@ -33,13 +37,16 @@ public class Movie {
         this.productionDate = productionDate;
         this.genre = genre;
         this.rates = new ArrayList<>();
+        this.numberOfVotes = 0;
     }
 
-    public void addRate(final int rate) {
+    public synchronized void addRate(final int rate) {
         if (rate < 0 || rate > 10) {
             throw new DomainException("Rate " + rate + " is greater than 10 or less than 0");
         }
         this.rates.add(new Rate(rate, LocalDateTime.now()));
+        calculateScore(new BigDecimal(rate), new BigDecimal(this.numberOfVotes));
+        numberOfVotes++;
     }
 
     public UUID getId() {
@@ -60,5 +67,23 @@ public class Movie {
 
     public List<Rate> getRates() {
         return Collections.unmodifiableList(rates);
+    }
+
+    public BigDecimal getScore() {
+        return score;
+    }
+
+    public int getNumberOfVotes() {
+        return numberOfVotes;
+    }
+
+    private void calculateScore(final BigDecimal rate, final BigDecimal numberOfVotes) {
+        if (score == null) {
+            score = rate;
+        } else {
+            score = score.multiply(numberOfVotes, MathContext.DECIMAL128)
+                .add(rate)
+                .divide(numberOfVotes.add(BigDecimal.ONE), MathContext.DECIMAL128);
+        }
     }
 }

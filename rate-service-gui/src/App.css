@@ -17,3 +17,19 @@
   justify-content: center;
   color: white;
 }
+
+.flex-3 {
+  flex: 3
+}
+
+.flex-6 {
+  flex: 6
+}
+
+.flex {
+  display: flex;
+}
+
+.pull-right {
+  text-align: center;
+}

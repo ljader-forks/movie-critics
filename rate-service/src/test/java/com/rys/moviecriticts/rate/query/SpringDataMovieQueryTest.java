@@ -8,10 +8,12 @@ import static org.mockito.Mockito.when;
 import com.rys.moviecriticts.rate.controller.dto.PageableDto;
 import com.rys.moviecriticts.rate.domain.Movie;
 import com.rys.moviecriticts.rate.domain.MovieProvider;
+import com.rys.moviecriticts.rate.domain.Rate;
 import com.rys.moviecriticts.rate.domain.repository.MovieRepository;
 import com.rys.moviecriticts.rate.query.view.MovieView;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,6 +51,7 @@ class SpringDataMovieQueryTest {
 
     private MovieView createMovieView(final Movie firstMovie) {
         return new MovieView(firstMovie.getId(), firstMovie.getTitle(), firstMovie.getProductionDate(),
-            firstMovie.getGenre());
+            firstMovie.getGenre(), firstMovie.getScore(), firstMovie.getNumberOfVotes(),
+            firstMovie.getRates().stream().map(Rate::getScale).collect(Collectors.toList()));
     }
 }

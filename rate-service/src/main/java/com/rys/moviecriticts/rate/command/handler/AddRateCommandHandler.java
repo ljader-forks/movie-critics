@@ -18,7 +18,7 @@ public class AddRateCommandHandler {
     }
 
 
-    public void handle(final AddRateCommand command) {
+    public synchronized void handle(final AddRateCommand command) {
         final Movie movie = getMovie(command);
         movie.addRate(command.getRate());
 

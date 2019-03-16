@@ -1,6 +1,7 @@
 package com.rys.moviecriticts.rate.query;
 
 import com.rys.moviecriticts.rate.controller.dto.PageableDto;
+import com.rys.moviecriticts.rate.domain.Rate;
 import com.rys.moviecriticts.rate.domain.repository.MovieRepository;
 import com.rys.moviecriticts.rate.query.view.MovieView;
 import java.util.List;
@@ -21,7 +22,9 @@ class SpringRepositoryMovieQuery implements MovieQuery {
     public List<MovieView> findMovies(final PageableDto pageableDto) {
         return movieRepository.findAll(PageRequest.of(pageableDto.getPage(), pageableDto.getSize()))
             .stream()
-            .map((movie -> new MovieView(movie.getId(), movie.getTitle(), movie.getProductionDate(), movie.getGenre())))
+            .map((movie -> new MovieView(movie.getId(), movie.getTitle(), movie.getProductionDate(), movie.getGenre(),
+                movie.getScore(), movie.getNumberOfVotes(),
+                movie.getRates().stream().map(Rate::getScale).collect(Collectors.toList()))))
             .collect(Collectors.toList());
     }
 }

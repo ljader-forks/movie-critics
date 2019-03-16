@@ -9,7 +9,11 @@ class Movies extends Component {
   componentDidMount = () => {
     fetch('http://localhost:8080/api/movies')
     .then(res => res.json())
-    .then(data => this.setState({movieList: data}))
+    .then(data => {
+      data.forEach(movie => movie.score = Math.round(movie.score * 100) / 100);
+      this.setState({movieList: data}
+      )
+    })
   };
 
   render() {
@@ -22,13 +26,14 @@ class Movies extends Component {
             <th>Title</th>
             <th>Production Date</th>
             <th>Genre</th>
-            <th>Score</th>
+            <th>Score (Votes)</th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbody>
           {
             movieList.map((movie) => (
-              <MovieItem key={movie.id} item={movie}/>
+                <MovieItem key={movie.id} item={movie}/>
             ))
           }
           </tbody>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import constImages from '../img/index'
+import RateModal from "./RateModal";
 
 class MovieItem extends Component {
   render() {
@@ -12,7 +13,8 @@ class MovieItem extends Component {
           <td>{item.title}</td>
           <td>{item.productionDate}</td>
           <td><img className="image" src={icon}/></td>
-          <td>{item.score ? item.score : 'No score'}</td>
+          <td>{item.score ? `${item.score}(${item.numberOfVoters})` : 'No score'}</td>
+          <td><RateModal movieTitle={item.title} movieId={item.id}/></td>
         </tr>
     );
   }
