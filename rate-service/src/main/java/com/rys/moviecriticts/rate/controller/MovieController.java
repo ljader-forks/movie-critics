@@ -4,11 +4,8 @@ import com.rys.moviecriticts.rate.command.AddRateCommand;
 import com.rys.moviecriticts.rate.command.handler.AddRateCommandHandler;
 import com.rys.moviecriticts.rate.controller.dto.CreationRateDto;
 import com.rys.moviecriticts.rate.controller.dto.PageableDto;
-import com.rys.moviecriticts.rate.domain.Movie;
-import com.rys.moviecriticts.rate.domain.repository.MovieRepository;
 import com.rys.moviecriticts.rate.query.MovieQuery;
 import com.rys.moviecriticts.rate.query.view.MovieView;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +19,10 @@ public class MovieController {
     private final AddRateCommandHandler handler;
     private final MovieQuery movieQuery;
 
-    //TODO: delete
-    private final MovieRepository repository;
-
     @Autowired
-    public MovieController(final AddRateCommandHandler handler, final MovieQuery movieQuery,
-        final MovieRepository repository) {
+    public MovieController(final AddRateCommandHandler handler, final MovieQuery movieQuery) {
         this.handler = handler;
         this.movieQuery = movieQuery;
-        this.repository = repository;
     }
 
     @PostMapping("/{id}/rates")
@@ -46,11 +38,5 @@ public class MovieController {
     List<MovieView> findMovies(@RequestParam(required = false, defaultValue = "0") final int page,
         @RequestParam(required = false, defaultValue = "10") final int size) {
         return movieQuery.findMovies(new PageableDto(size, page));
-    }
-
-    //TODO: delete
-    @PutMapping
-    void add() {
-        repository.save(new Movie(UUID.randomUUID(), "OOP: Return of the Java", LocalDate.now(), "genre"));
     }
 }

@@ -11,6 +11,12 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: movie
     networks:
       - movie
+  mongo-seed:
+    build: ./mongo-seed
+    depends_on:
+      - mongo
+    networks:
+      - movie
   rate-service:
     build: ../rate-service
     restart: always
