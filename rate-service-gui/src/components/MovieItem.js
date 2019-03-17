@@ -4,7 +4,7 @@ import RateModal from "./RateModal";
 
 class MovieItem extends Component {
   render() {
-    const {item} = this.props;
+    const {item, refreshList} = this.props;
     const icons = constImages.genre;
     const icon = icons[item.genre] ? icons[item.genre] : icons.default;
 
@@ -15,7 +15,9 @@ class MovieItem extends Component {
           <td><img alt={item.genre} className="image" src={icon}/></td>
           <td>{item.score ? `${item.score}(${item.numberOfVoters})`
               : 'No score'}</td>
-          <td><RateModal movieTitle={item.title} movieId={item.id}/></td>
+          <td><RateModal afterSaveAction={refreshList}
+                         movieTitle={item.title}
+                         movieId={item.id}/></td>
         </tr>
     );
   }

@@ -9,7 +9,7 @@ Rating application for movies
 
 * Docker
 * Docker-compose
-* Java 11 (with JAVA_HOME pointing at it)
+* Java 11 (with JAVA_HOME pointing at it) - for build purpose
 
 ### Running
 From project root run `./deploy_docker.sh` (or execute manually commands inside).

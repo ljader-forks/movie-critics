@@ -30,6 +30,14 @@
   display: flex;
 }
 
-.pull-right {
+.center {
   text-align: center;
+}
+
+.pull-right {
+  text-align: right;
+}
+
+.width-30 {
+  width: 30%;
 }

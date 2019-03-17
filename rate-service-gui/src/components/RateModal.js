@@ -10,7 +10,7 @@ class RateModal extends Component {
   handleClose = () => this.setState({show: false});
 
   handleShow = () => {
-    return this.setState({show: true});
+    return this.setState({show: true, rate: 1});
   };
 
   changeRate = (e) => this.setState({rate: e.target.value});
@@ -18,7 +18,7 @@ class RateModal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const {rate} = this.state;
-    const {movieId} = this.props;
+    const {movieId, afterSaveAction} = this.props;
     const data = {
       rate
     };
@@ -27,10 +27,11 @@ class RateModal extends Component {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
+    }).then(() => {
+      afterSaveAction();
+      this.handleClose();
     });
 
-    debugger;
-    this.handleClose();
   };
 
   render() {
@@ -49,21 +50,19 @@ class RateModal extends Component {
               <Modal.Body>
                 <div className={"flex"}>
                   <label className={"flex-3"}>Rate: </label>
-                  <input className={"slider flex-6"} type="range" min="1"
-                         max="10" value={this.state.rate} id="slider"
+                  <input className={"slider flex-6"}
+                         type="range"
+                         min="1"
+                         max="10"
+                         value={this.state.rate}
+                         id="slider"
                          onChange={this.changeRate}/>
-                  <label
-                      className={"flex-3 pull-right"}>{this.state.rate}</label>
+                  <label className={"flex-3 center"}>{this.state.rate}</label>
                 </div>
               </Modal.Body>
               <Modal.Footer>
-                <button type={"submit"} className={"btn btn-success"}>
-                  Rate
-                </button>
-                <button className={"btn btn-warning"}
-                        onClick={this.handleClose}>
-                  Cancel
-                </button>
+                <button type={"submit"} className={"btn btn-success"}>Rate</button>
+                <button className={"btn btn-warning"} onClick={this.handleClose}>Cancel</button>
               </Modal.Footer>
             </form>
           </Modal>
