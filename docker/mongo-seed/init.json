@@ -10,7 +10,7 @@
     "genre": "musical",
     "rates": [],
     "numberOfVotes": 0,
-    "_class": "com.rys.moviecriticts.rate.domain.Movie"
+    "_class": "com.rys.moviecritics.rate.domain.Movie"
   },
   {
     "_id": {
@@ -23,7 +23,7 @@
     "genre": "novel",
     "rates": [],
     "numberOfVotes": 0,
-    "_class": "com.rys.moviecriticts.rate.domain.Movie"
+    "_class": "com.rys.moviecritics.rate.domain.Movie"
   },
   {
     "_id": {
@@ -87,7 +87,7 @@
     ],
     "score": "4.571428571428571428571428571428571",
     "numberOfVotes": 7,
-    "_class": "com.rys.moviecriticts.rate.domain.Movie"
+    "_class": "com.rys.moviecritics.rate.domain.Movie"
   },
   {
     "_id": {
@@ -109,7 +109,7 @@
     ],
     "score": "10.00",
     "numberOfVotes": 1,
-    "_class": "com.rys.moviecriticts.rate.domain.Movie"
+    "_class": "com.rys.moviecritics.rate.domain.Movie"
   },
   {
     "_id": {
@@ -131,6 +131,6 @@
     ],
     "score": "6.00",
     "numberOfVotes": 1,
-    "_class": "com.rys.moviecriticts.rate.domain.Movie"
+    "_class": "com.rys.moviecritics.rate.domain.Movie"
   }
 ]
