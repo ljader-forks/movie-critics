@@ -12,8 +12,9 @@ class MovieItem extends Component {
         <tr>
           <td>{item.title}</td>
           <td>{item.productionDate}</td>
-          <td><img className="image" src={icon}/></td>
-          <td>{item.score ? `${item.score}(${item.numberOfVoters})` : 'No score'}</td>
+          <td><img alt={item.genre} className="image" src={icon}/></td>
+          <td>{item.score ? `${item.score}(${item.numberOfVoters})`
+              : 'No score'}</td>
           <td><RateModal movieTitle={item.title} movieId={item.id}/></td>
         </tr>
     );

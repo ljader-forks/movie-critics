@@ -1,6 +1,6 @@
 package com.rys.moviecriticts.rate.query;
 
-import com.rys.moviecriticts.rate.controller.dto.PageableDto;
+import com.rys.moviecriticts.rate.rest.dto.PageableDto;
 import com.rys.moviecriticts.rate.domain.Rate;
 import com.rys.moviecriticts.rate.domain.repository.MovieRepository;
 import com.rys.moviecriticts.rate.query.view.MovieView;

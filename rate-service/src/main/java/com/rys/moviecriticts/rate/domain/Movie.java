@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Movie {
 
     @Id
-    private final UUID id;
+    private final ObjectId id;
     @NotEmpty
     private final String title;
     @NotNull
@@ -31,7 +31,7 @@ public class Movie {
     private BigDecimal score;
     private int numberOfVotes;
 
-    public Movie(final UUID id, final String title, final LocalDate productionDate, final String genre) {
+    public Movie(final ObjectId id, final String title, final LocalDate productionDate, final String genre) {
         this.id = id;
         this.title = title;
         this.productionDate = productionDate;
@@ -49,7 +49,7 @@ public class Movie {
         numberOfVotes++;
     }
 
-    public UUID getId() {
+    public ObjectId getId() {
         return id;
     }
 

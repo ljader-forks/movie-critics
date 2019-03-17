@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.rys.moviecriticts.rate.domain.exception.DomainException;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.UUID;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -16,7 +16,7 @@ class MovieTest {
     @DisplayName("Should add rates")
     void shouldAdd_rates() {
         //Given
-        final Movie movie = MovieProvider.create(UUID.randomUUID());
+        final Movie movie = MovieProvider.create(ObjectId.get());
 
         final int rate1 = 10;
         final int rate2 = 5;
@@ -37,7 +37,7 @@ class MovieTest {
     @DisplayName("Should throw exception with invalid rate")
     void shouldReject_rate() {
         //Given
-        final Movie movie = MovieProvider.create(UUID.randomUUID());
+        final Movie movie = MovieProvider.create(ObjectId.get());
 
         final int wrongRate = -1;
         //When

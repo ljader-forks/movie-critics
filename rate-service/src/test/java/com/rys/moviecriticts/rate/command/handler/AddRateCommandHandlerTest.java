@@ -8,7 +8,7 @@ import com.rys.moviecriticts.rate.domain.Movie;
 import com.rys.moviecriticts.rate.domain.repository.MovieRepository;
 import com.rys.moviecriticts.rate.exception.NotFoundResourceException;
 import java.util.Optional;
-import java.util.UUID;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ class AddRateCommandHandlerTest {
     void handle() {
         //Given
         final Movie movie = mock(Movie.class);
-        final UUID id = UUID.randomUUID();
+        final ObjectId id = ObjectId.get();
         final int rate = 5;
 
         when(movieRepository.findById(id)).thenReturn(Optional.of(movie));
@@ -45,7 +45,7 @@ class AddRateCommandHandlerTest {
     @DisplayName("Should throw exception when no movie was found")
     void shouldThrow_exception() {
         //Given
-        final UUID id = UUID.randomUUID();
+        final ObjectId id = ObjectId.get();
 
         when(movieRepository.findById(id)).thenReturn(Optional.empty());
         //When

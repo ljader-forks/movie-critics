@@ -1,8 +1,8 @@
-package com.rys.moviecriticts.rate.controller;
+package com.rys.moviecriticts.rate.rest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.rys.moviecriticts.rate.controller.dto.CreationRateDto;
+import com.rys.moviecriticts.rate.rest.dto.CreationRateDto;
 import com.rys.moviecriticts.rate.domain.MovieProvider;
 import com.rys.moviecriticts.rate.domain.repository.MovieRepository;
 import com.rys.moviecriticts.rate.query.view.MovieView;
@@ -10,7 +10,7 @@ import cz.jirutka.spring.embedmongo.EmbeddedMongoFactoryBean;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +66,7 @@ class MovieControllerTest {
     void shouldAdd_rate() {
         //Given
         final CreationRateDto rateDto = new CreationRateDto(5);
-        final UUID id = UUID.randomUUID();
+        final ObjectId id = ObjectId.get();
 
         movieRepository.save(MovieProvider.create(id));
         //When
@@ -82,8 +82,8 @@ class MovieControllerTest {
         //Given
         final CreationRateDto rateDto = new CreationRateDto(5);
         //When
-        final ResponseEntity<String> response = testRestTemplate.postForEntity(getRateEndpoint(UUID.randomUUID()),
-            rateDto, String.class, Map.of());
+        final ResponseEntity<String> response = testRestTemplate.postForEntity(getRateEndpoint(ObjectId.get()), rateDto,
+            String.class, Map.of());
         //Then
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
@@ -92,8 +92,8 @@ class MovieControllerTest {
     @DisplayName("Should find movies")
     void shouldFind_movies() {
         //Given
-        movieRepository.save(MovieProvider.create(UUID.randomUUID()));
-        movieRepository.save(MovieProvider.create(UUID.randomUUID()));
+        movieRepository.save(MovieProvider.create(ObjectId.get()));
+        movieRepository.save(MovieProvider.create(ObjectId.get()));
         //When
         final ResponseEntity<List<MovieView>> exchange = testRestTemplate.exchange(getMovieEndpoint(), HttpMethod.GET,
             null, getListMovieViewsType(), Map.of());
@@ -115,7 +115,7 @@ class MovieControllerTest {
         return UriComponentsBuilder.newInstance().scheme("http").host("localhost").port(port).path("/api/movies");
     }
 
-    private String getRateEndpoint(final UUID id) {
+    private String getRateEndpoint(final ObjectId id) {
         return getMoviePath().path("/{id}/rates").buildAndExpand(id).toUriString();
     }
 

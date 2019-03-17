@@ -1,4 +1,4 @@
-package com.rys.moviecriticts.rate.controller;
+package com.rys.moviecriticts.rate.rest;
 
 public class ResponseWrapper<T> {
 

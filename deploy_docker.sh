@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./mvnw clean install -DskipTests
+./mvnw clean install -P fullBuild -DskipTests
 docker-compose -f ./docker/docker-compose.yml build
 docker-compose -f ./docker/docker-compose.yml down
 docker-compose -f ./docker/docker-compose.yml up -d

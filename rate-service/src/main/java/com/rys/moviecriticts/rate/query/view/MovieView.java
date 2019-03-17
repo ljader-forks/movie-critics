@@ -5,11 +5,11 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
+import org.bson.types.ObjectId;
 
 public class MovieView {
 
-    private UUID id;
+    private ObjectId id;
     private String title;
     private LocalDate productionDate;
     private String genre;
@@ -17,7 +17,7 @@ public class MovieView {
     private int numberOfVoters;
     private List<Integer> rates;
 
-    public MovieView(final UUID id, final String title, final LocalDate productionDate, final String genre,
+    public MovieView(final ObjectId id, final String title, final LocalDate productionDate, final String genre,
         final BigDecimal score, final int numberOfVoters, final List<Integer> rates) {
         this.id = id;
         this.title = title;
@@ -31,7 +31,7 @@ public class MovieView {
     public MovieView() {
     }
 
-    public UUID getId() {
+    public ObjectId getId() {
         return id;
     }
 

@@ -1,4 +1,4 @@
-package com.rys.moviecriticts.rate.controller;
+package com.rys.moviecriticts.rate.rest;
 
 import com.rys.moviecriticts.rate.exception.NotFoundResourceException;
 import org.springframework.http.HttpStatus;

@@ -5,15 +5,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.rys.moviecriticts.rate.controller.dto.PageableDto;
+import com.rys.moviecriticts.rate.rest.dto.PageableDto;
 import com.rys.moviecriticts.rate.domain.Movie;
 import com.rys.moviecriticts.rate.domain.MovieProvider;
 import com.rys.moviecriticts.rate.domain.Rate;
 import com.rys.moviecriticts.rate.domain.repository.MovieRepository;
 import com.rys.moviecriticts.rate.query.view.MovieView;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,8 +35,8 @@ class SpringDataMovieQueryTest {
     @DisplayName("Should return views")
     void findMovies() {
         //Given
-        final Movie firstMovie = MovieProvider.create(UUID.randomUUID());
-        final Movie secondMovie = MovieProvider.create(UUID.randomUUID());
+        final Movie firstMovie = MovieProvider.create(ObjectId.get());
+        final Movie secondMovie = MovieProvider.create(ObjectId.get());
         final List<Movie> movies = List.of(firstMovie, secondMovie);
         final PageableDto pageableDto = new PageableDto(10, 0);
 

@@ -1,4 +1,4 @@
-package com.rys.moviecriticts.rate.controller.dto;
+package com.rys.moviecriticts.rate.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

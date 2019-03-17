@@ -1,4 +1,4 @@
-package com.rys.moviecriticts.rate.controller.dto;
+package com.rys.moviecriticts.rate.rest.dto;
 
 public class PageableDto {
 

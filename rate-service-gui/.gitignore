@@ -7,9 +7,10 @@
 
 # testing
 /coverage
-
+/node
 # production
 /build
+/build-full
 
 # misc
 .DS_Store

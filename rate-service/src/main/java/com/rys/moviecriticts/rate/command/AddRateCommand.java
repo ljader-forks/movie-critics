@@ -1,13 +1,13 @@
 package com.rys.moviecriticts.rate.command;
 
-import java.util.UUID;
+import org.bson.types.ObjectId;
 
 public class AddRateCommand {
 
     private final int rate;
-    private final UUID movieId;
+    private final ObjectId movieId;
 
-    public AddRateCommand(final int rate, final UUID movieId) {
+    public AddRateCommand(final int rate, final ObjectId movieId) {
         this.rate = rate;
         this.movieId = movieId;
     }
@@ -16,7 +16,7 @@ public class AddRateCommand {
         return rate;
     }
 
-    public UUID getMovieId() {
+    public ObjectId getMovieId() {
         return movieId;
     }
 }

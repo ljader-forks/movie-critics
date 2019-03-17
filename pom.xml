@@ -18,6 +18,7 @@
 
   <modules>
     <module>rate-service</module>
+    <module>rate-service-gui</module>
   </modules>
 
   <properties>

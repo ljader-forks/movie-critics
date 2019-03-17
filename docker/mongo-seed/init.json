@@ -1,98 +1,136 @@
 [
   {
-    "_id" : "994abbe2-f9c8-22f5-c714-f5ce534131a8",
-    "title" : "Mama Mia",
-    "productionDate" : {"$date":"2015-06-15T00:00:00.000Z"},
-    "genre" : "musical",
-    "rates" : [],
-    "numberOfVotes" : 0,
-    "_class" : "com.rys.moviecriticts.rate.domain.Movie"
+    "_id": {
+      "$oid": "5c8e28fcf299e80490508c62"
+    },
+    "title": "Mama Mia",
+    "productionDate": {
+      "$date": "2015-06-15T00:00:00.000Z"
+    },
+    "genre": "musical",
+    "rates": [],
+    "numberOfVotes": 0,
+    "_class": "com.rys.moviecriticts.rate.domain.Movie"
   },
   {
-    "_id" : "43acfe25-5060-4e47-a86d-d82b1060a3ba",
-    "title" : "The Notebook",
-    "productionDate" : {"$date":"2012-06-15T00:00:00.000Z"},
-    "genre" : "novel",
-    "rates" : [],
-    "numberOfVotes" : 0,
-    "_class" : "com.rys.moviecriticts.rate.domain.Movie"
+    "_id": {
+      "$oid": "5c8e2909f299e80490508c63"
+    },
+    "title": "The Notebook",
+    "productionDate": {
+      "$date": "2012-06-15T00:00:00.000Z"
+    },
+    "genre": "novel",
+    "rates": [],
+    "numberOfVotes": 0,
+    "_class": "com.rys.moviecriticts.rate.domain.Movie"
   },
   {
-    "_id" : "af90d8a5-7d6c-4aeb-9286-642ba0f44a40",
-    "title" : "OOP: Return of the Java",
-    "productionDate" : {"$date":"2019-03-16T00:00:00.000Z"},
-    "genre" : "horror",
-    "rates" : [
+    "_id": {
+      "$oid": "5c8e2913f299e80490508c64"
+    },
+    "title": "OOP: Return of the Java",
+    "productionDate": {
+      "$date": "2019-03-16T00:00:00.000Z"
+    },
+    "genre": "horror",
+    "rates": [
       {
-        "scale" : 10,
-        "createdAt" : {"$date":"2019-03-16T20:14:42.771Z"},
-        "count" : 0
+        "scale": 10,
+        "createdAt": {
+          "$date": "2019-03-16T20:14:42.771Z"
+        },
+        "count": 0
       },
       {
-        "scale" : 2,
-        "createdAt" : {"$date":"2019-03-16T20:16:05.131Z"},
-        "count" : 0
+        "scale": 2,
+        "createdAt": {
+          "$date": "2019-03-16T20:16:05.131Z"
+        },
+        "count": 0
       },
       {
-        "scale" : 6,
-        "createdAt" : {"$date":"2019-03-16T20:16:12.778Z"},
-        "count" : 0
+        "scale": 6,
+        "createdAt": {
+          "$date": "2019-03-16T20:16:12.778Z"
+        },
+        "count": 0
       },
       {
-        "scale" : 3,
-        "createdAt" : {"$date":"2019-03-16T20:16:16.885Z"},
-        "count" : 0
+        "scale": 3,
+        "createdAt": {
+          "$date": "2019-03-16T20:16:16.885Z"
+        },
+        "count": 0
       },
       {
-        "scale" : 1,
-        "createdAt" : {"$date":"2019-03-16T20:16:19.627Z"},
-        "count" : 0
+        "scale": 1,
+        "createdAt": {
+          "$date": "2019-03-16T20:16:19.627Z"
+        },
+        "count": 0
       },
       {
-        "scale" : 7,
-        "createdAt" : {"$date":"2019-03-16T20:16:22.806Z"},
-        "count" : 0
+        "scale": 7,
+        "createdAt": {
+          "$date": "2019-03-16T20:16:22.806Z"
+        },
+        "count": 0
       },
       {
-        "scale" : 3,
-        "createdAt" : {"$date":"2019-03-16T20:23:57.741Z"},
-        "count" : 0
+        "scale": 3,
+        "createdAt": {
+          "$date": "2019-03-16T20:23:57.741Z"
+        },
+        "count": 0
       }
     ],
-    "score" : "4.571428571428571428571428571428571",
-    "numberOfVotes" : 7,
-    "_class" : "com.rys.moviecriticts.rate.domain.Movie"
+    "score": "4.571428571428571428571428571428571",
+    "numberOfVotes": 7,
+    "_class": "com.rys.moviecriticts.rate.domain.Movie"
   },
   {
-    "_id" : "1ef70bdc-d453-48e4-9029-76f1fbabd42d",
-    "title" : "Wild Wild PHP",
-    "productionDate" : {"$date":"2019-03-16T00:00:00.000Z"},
-    "genre" : "western",
-    "rates" : [
+    "_id": {
+      "$oid": "5c8e2919f299e80490508c65"
+    },
+    "title": "Wild Wild PHP",
+    "productionDate": {
+      "$date": "2019-03-16T00:00:00.000Z"
+    },
+    "genre": "western",
+    "rates": [
       {
-        "scale" : 10,
-        "createdAt" : {"$date":"2019-03-16T20:14:42.771Z"},
-        "count" : 0
+        "scale": 10,
+        "createdAt": {
+          "$date": "2019-03-16T20:14:42.771Z"
+        },
+        "count": 0
       }
     ],
-    "score" : "10.00",
-    "numberOfVotes" : 1,
-    "_class" : "com.rys.moviecriticts.rate.domain.Movie"
+    "score": "10.00",
+    "numberOfVotes": 1,
+    "_class": "com.rys.moviecriticts.rate.domain.Movie"
   },
   {
-    "_id" : "33142e8b-8a09-46b0-a044-1746e7045b21",
-    "title" : "OOP: New Language",
-    "productionDate" : {"$date":"2019-03-16T00:00:00.000Z"},
-    "genre" : "action",
-    "rates" : [
+    "_id": {
+      "$oid": "5c8e2924f299e80490508c66"
+    },
+    "title": "OOP: New Language",
+    "productionDate": {
+      "$date": "2019-03-16T00:00:00.000Z"
+    },
+    "genre": "action",
+    "rates": [
       {
-        "scale" : 6,
-        "createdAt" : {"$date":"2019-03-16T20:14:42.771Z"},
-        "count" : 0
+        "scale": 6,
+        "createdAt": {
+          "$date": "2019-03-16T20:14:42.771Z"
+        },
+        "count": 0
       }
     ],
-    "score" : "6.00",
-    "numberOfVotes" : 1,
-    "_class" : "com.rys.moviecriticts.rate.domain.Movie"
+    "score": "6.00",
+    "numberOfVotes": 1,
+    "_class": "com.rys.moviecriticts.rate.domain.Movie"
   }
 ]
