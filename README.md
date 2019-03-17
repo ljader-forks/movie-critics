@@ -1,7 +1,21 @@
 
-[![Build Status](https://travis-ci.com/lukaszrys/movie-criticts.svg??token=WxMp5FXszxp4REupefyE&branch=develop)](https://travis-ci.com/lukaszrys/movie-criticts)
-# movie-criticts
-Rating application for movies
+[![Build Status](https://travis-ci.com/lukaszrys/movie-critics.svg?token=WxMp5FXszxp4REupefyE&branch=develop)](https://travis-ci.com/lukaszrys/movie-critics)
+# Movie-critics project
+
+Rating application for movies.
+
+The project has 2 application:
+
+* **rate-service** application which is Rest SpringBoot Java Application.
+* **rate-service-gui** which is React application that communicates with *rate-service*.
+
+Additional directories/files:
+
+* **docker** directory - it contains *docker-compose.yml* designed for full application deployment and *mongo-seed* directory which is responsible for populating data to MongoDB.
+* **deploy_docker.sh** script - responsible for deploying application in docker. It (re)builds whole project, images and then executing docker-compose.
+* **travis.yml** file - for Travis CI.
+* **mvnw** files - wrapper for maven.
+* **Dockerfile** in rate-service - responsible for building image of application.
 
 # Docker deployment
 
@@ -13,7 +27,7 @@ Rating application for movies
 
 ### Running
 From project root run `./deploy_docker.sh` (or execute manually commands inside).
-If no changes to application are made after running above script, the `docker-compose -f ./docker/docker-compose.yml up -d` will be enough to restart environment.
+If no changes to application are made after running above script the `docker-compose -f ./docker/docker-compose.yml up -d` will be enough to restart environment.
 
 This will start:
 
