@@ -3,4 +3,4 @@ jdk:
 - openjdk11
 sudo: required
 script:
-- ./mvnw clean install
+- ./mvnw clean install -P fullBuild
