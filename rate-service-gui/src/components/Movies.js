@@ -5,47 +5,26 @@ import Pagination from "./Pagination";
 class Movies extends Component {
   state = {
     movieList: [],
-    currentSize: 10
+    size: 10
   };
 
   componentDidMount = () => {
     this.refreshList()
   };
 
-  refreshList = (size = this.state.currentSize) => {
+  refreshList = () => {
+    const {size} = this.state;
     fetch(`http://localhost:8080/api/movies?size=${size}`)
     .then(res => res.json())
     .then(data => {
       if (data && Array.isArray(data)) {
         this.transformArrayData(data);
-        this.setState({movieList: data, currentSize: size});
+        this.setState({movieList: data, size});
       }
     })
   };
 
-  transformArrayData = (data) => {
-    data.forEach(
-        movie => {
-          movie.score = Math.round(movie.score * 100) / 100;
-          movie.productionDate = this.formatDate(new Date(movie.productionDate));
-        });
-  };
-
-  formatDate = (date = new Date()) => {
-    let month = String(date.getMonth() + 1);
-    let day = String(date.getDate());
-    const year = String(date.getFullYear());
-
-    if (month.length < 2) {
-      month = '0' + month
-    }
-
-    if (day.length < 2) {
-      day = '0' + day;
-    }
-
-    return `${day}-${month}-${year}`;
-  };
+  changeSize = (size = this.state.size) => this.setState({size: size});
 
   render() {
     const {movieList} = this.state;
@@ -70,11 +49,37 @@ class Movies extends Component {
             }
             </tbody>
           </table>
-          <Pagination refreshList={this.refreshList}/>
+          <Pagination size={this.state.size}
+                      changeSize={this.changeSize}
+                      refreshList={this.refreshList}/>
         </div>
 
     )
   }
+
+  transformArrayData = (data) => {
+    data.forEach(
+        movie => {
+          movie.score = Math.round(movie.score * 100) / 100;
+          movie.productionDate = this.formatDate(new Date(movie.productionDate));
+        });
+  };
+
+  formatDate = (date = new Date()) => {
+    let month = String(date.getMonth() + 1);
+    let day = String(date.getDate());
+    const year = String(date.getFullYear());
+
+    if (month.length < 2) {
+      month = '0' + month
+    }
+
+    if (day.length < 2) {
+      day = '0' + day;
+    }
+
+    return `${day}-${month}-${year}`;
+  };
 }
 
 export default Movies;

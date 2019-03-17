@@ -1,11 +1,11 @@
 package com.rys.moviecriticts.rate.rest;
 
 import com.rys.moviecriticts.rate.command.AddRateCommand;
-import com.rys.moviecriticts.rate.command.handler.AddRateCommandHandler;
-import com.rys.moviecriticts.rate.rest.dto.CreationRateDto;
-import com.rys.moviecriticts.rate.rest.dto.PageableDto;
+import com.rys.moviecriticts.rate.command.handler.CommandHandler;
 import com.rys.moviecriticts.rate.query.MovieQuery;
 import com.rys.moviecriticts.rate.query.view.MovieView;
+import com.rys.moviecriticts.rate.rest.dto.CreationRateDto;
+import com.rys.moviecriticts.rate.rest.dto.PageableDto;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MovieController {
 
-    private final AddRateCommandHandler handler;
+    private final CommandHandler<AddRateCommand> handler;
     private final MovieQuery movieQuery;
 
     @Autowired
-    public MovieController(final AddRateCommandHandler handler, final MovieQuery movieQuery) {
+    public MovieController(final CommandHandler<AddRateCommand> handler, final MovieQuery movieQuery) {
         this.handler = handler;
         this.movieQuery = movieQuery;
     }

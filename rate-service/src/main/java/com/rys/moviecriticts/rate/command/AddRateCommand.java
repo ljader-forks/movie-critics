@@ -2,7 +2,7 @@ package com.rys.moviecriticts.rate.command;
 
 import org.bson.types.ObjectId;
 
-public class AddRateCommand {
+public class AddRateCommand implements Command {
 
     private final int rate;
     private final ObjectId movieId;

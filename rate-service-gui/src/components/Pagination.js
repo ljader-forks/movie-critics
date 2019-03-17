@@ -1,24 +1,17 @@
 import React, {Component} from 'react';
 
 class Pagination extends Component {
-  state = {
-    size: 10
-  };
 
-  changeSize = (e) => this.setState({size: e.target.value});
-
-  refreshList = (e) => {
-    e.preventDefault();
-    this.props.refreshList(this.state.size);
-  };
+  changeSize = (e) => this.props.changeSize(e.target.value);
 
   render() {
+    const {refreshList} = this.props;
     return (
         <div className={"col-md-2"}>
           <div className={"input-group"}>
-            <input type={"number"} value={this.state.size} onChange={this.changeSize} className={"form-control"}/>
+            <input type={"text"} value={this.props.size} onChange={this.changeSize} className={"form-control"}/>
             <span className="input-group-btn">
-              <button className={"btn btn-info"} onClick={this.refreshList}>Size</button>
+              <button className={"btn btn-info"} onClick={refreshList}>Size</button>
             </span>
           </div>
         </div>

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AddRateCommandHandler {
+class AddRateCommandHandler implements CommandHandler<AddRateCommand> {
 
     private final MovieRepository movieRepository;
 
@@ -17,11 +17,10 @@ public class AddRateCommandHandler {
         this.movieRepository = movieRepository;
     }
 
-
+    @Override
     public synchronized void handle(final AddRateCommand command) {
         final Movie movie = getMovie(command);
         movie.addRate(command.getRate());
-
         movieRepository.save(movie);
     }
 
