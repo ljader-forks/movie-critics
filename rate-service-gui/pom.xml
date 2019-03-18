@@ -13,11 +13,6 @@
   <artifactId>rate-service-gui</artifactId>
   <packaging>jar</packaging>
 
-  <properties>
-    <artifactory.deployment.app.tag>${project.version}-local</artifactory.deployment.app.tag>
-  </properties>
-
-
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
 
