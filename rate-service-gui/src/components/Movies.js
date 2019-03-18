@@ -1,33 +1,25 @@
 import React, {Component} from 'react';
 import MovieItem from "./MovieItem";
 import Pagination from "./Pagination";
+import {connect} from 'react-redux';
+import {fetchMovies} from "../actions/movieActions";
 
 class Movies extends Component {
-  state = {
-    movieList: [],
-    size: 10
-  };
-
-  componentDidMount = () => {
-    this.refreshList()
-  };
-
-  refreshList = () => {
-    const {size} = this.state;
-    fetch(`http://localhost:8080/api/movies?size=${size}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data && Array.isArray(data)) {
-        this.transformArrayData(data);
-        this.setState({movieList: data, size});
-      }
-    })
-  };
 
   changeSize = (size = this.state.size) => this.setState({size: size});
 
+  componentDidMount() {
+    this.props.fetchMovies(this.props.size);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.refreshMovies) {
+      this.props.fetchMovies(nextProps.size ? nextProps.size : this.props.size);
+    }
+  }
+
   render() {
-    const {movieList} = this.state;
+    const {movieList, size} = this.props;
 
     return (
         <div>
@@ -44,42 +36,22 @@ class Movies extends Component {
             <tbody>
             {
               movieList.map((movie) => (
-                  <MovieItem key={movie.id} item={movie} refreshList={this.refreshList}/>
+                  <MovieItem key={movie.id} item={movie}/>
               ))
             }
             </tbody>
           </table>
-          <Pagination size={this.state.size}
-                      changeSize={this.changeSize}
-                      refreshList={this.refreshList}/>
+          <Pagination size={size}/>
         </div>
 
     )
   }
-
-  transformArrayData = (data) => {
-    data.forEach(
-        movie => {
-          movie.score = Math.round(movie.score * 100) / 100;
-          movie.productionDate = this.formatDate(new Date(movie.productionDate));
-        });
-  };
-
-  formatDate = (date = new Date()) => {
-    let month = String(date.getMonth() + 1);
-    let day = String(date.getDate());
-    const year = String(date.getFullYear());
-
-    if (month.length < 2) {
-      month = '0' + month
-    }
-
-    if (day.length < 2) {
-      day = '0' + day;
-    }
-
-    return `${day}-${month}-${year}`;
-  };
 }
 
-export default Movies;
+const mapStateToProps = state => ({
+  movieList: state.movieReducer.movieList,
+  size: state.movieReducer.size,
+  refreshMovies: state.movieReducer.refreshMovies
+});
+
+export default connect(mapStateToProps, {fetchMovies})(Movies);
