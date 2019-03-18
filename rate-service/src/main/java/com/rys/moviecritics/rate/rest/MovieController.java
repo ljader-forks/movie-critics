@@ -1,10 +1,10 @@
 package com.rys.moviecritics.rate.rest;
 
-import com.rys.moviecritics.rate.command.handler.CommandHandler;
+import com.rys.moviecritics.rate.command.AddRateCommand;
+import com.rys.moviecritics.rate.command.CommandDispatcher;
 import com.rys.moviecritics.rate.query.MovieQuery;
 import com.rys.moviecritics.rate.query.view.MovieView;
 import com.rys.moviecritics.rate.rest.dto.CreationRateDto;
-import com.rys.moviecritics.rate.command.AddRateCommand;
 import com.rys.moviecritics.rate.rest.dto.PageableDto;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MovieController {
 
-    private final CommandHandler<AddRateCommand> handler;
+    private final CommandDispatcher dispatcher;
     private final MovieQuery movieQuery;
 
     @Autowired
-    public MovieController(final CommandHandler<AddRateCommand> handler, final MovieQuery movieQuery) {
-        this.handler = handler;
+    public MovieController(final CommandDispatcher dispatcher, final MovieQuery movieQuery) {
+        this.dispatcher = dispatcher;
         this.movieQuery = movieQuery;
     }
 
@@ -29,7 +29,7 @@ public class MovieController {
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:3000")
     void addRate(@PathVariable final ObjectId id, @RequestBody final CreationRateDto rateDto) {
-        handler.handle(new AddRateCommand(rateDto.getRate(), id));
+        dispatcher.dispatch(new AddRateCommand(rateDto.getRate(), id));
     }
 
     @GetMapping
