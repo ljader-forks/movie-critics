@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Modal from "react-bootstrap/Modal";
+import {connect} from "react-redux";
+import {addRate} from "../actions/movieActions";
 
 class RateModal extends Component {
   state = {
@@ -18,19 +20,13 @@ class RateModal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const {rate} = this.state;
-    const {movieId, afterSaveAction} = this.props;
+    const {movieId} = this.props;
     const data = {
       rate
     };
 
-    fetch(`http://localhost:8080/api/movies/${movieId}/rates`, {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
-    }).then(() => {
-      afterSaveAction();
-      this.handleClose();
-    });
+    this.props.addRate(data, movieId);
+    this.handleClose();
 
   };
 
@@ -71,4 +67,4 @@ class RateModal extends Component {
   }
 }
 
-export default RateModal;
+export default connect(null, {addRate})(RateModal);
